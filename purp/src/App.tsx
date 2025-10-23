@@ -21,52 +21,23 @@ interface Game {
 
 // Store picks/notes data (you can replace this with an API call or database)
 const picksData: Record<string, Array<{ picker: string; pick: string }>> = {
-  "401772757": [
-    { picker: "Gilb", pick: "Cam Skattebo +54.5 Rushing Yards" },
-    { picker: "Gilb", pick: "Giants ML" },
-    { picker: "Tay", pick: "Giants -7.5" },
+  "401752752": [{ picker: "Gilb", pick: "Missouri +10.5" }],
+  "401752880": [{ picker: "Gilb", pick: "Illinois +10.5" }],
+  "401772866": [
+    { picker: "Gilb", pick: "49ers ML" },
+    { picker: "Gilb", pick: "49ers -2.5" },
   ],
-  "401772864": [
-    { picker: "Gilb", pick: "Luke McCaffrey +37.5 Rushing And Receiving" },
-    { picker: "Phil", pick: "Commanders ML" },
-    { picker: "Tay", pick: "Chris Moore +0.5 Touchdowns" },
-    { picker: "Tay", pick: "Dak Prescott +1.5 Passing TDs" },
+  "401772758": [
+    { picker: "Gilb", pick: "Cincinnati Bengals -7.5" },
+    { picker: "Phil", pick: "Bengals ML" },
   ],
-  "401772861": [
-    { picker: "Gilb", pick: "Saints ML" },
-    { picker: "Phil", pick: "Bears ML" },
-  ],
-  "401772754": [
-    { picker: "Gilb", pick: "Dolphins ML" },
-    { picker: "Phil", pick: "Browns ML" },
-    { picker: "Tay", pick: "De'Von Achane +0.5 Touchdowns" },
-    { picker: "Tay", pick: "Tua Tagovailoa +30.5 Passing Attempts" },
-  ],
-  "401772756": [
-    { picker: "Gilb", pick: "Colts ML" },
-    { picker: "Phil", pick: "Colts ML" },
-    { picker: "Tay", pick: "Alec Pierce +0.5 Touchdowns" },
-    { picker: "Tay", pick: "Justin Herbert +1.5 Passing TDs" },
-  ],
-  "401772753": [{ picker: "Phil", pick: "Chiefs ML" }],
-  "401772860": [
-    { picker: "Phil", pick: "Panthers ML" },
-    { picker: "Tay", pick: "Mason Taylor +0.5 Touchdowns" },
-  ],
-  "401772863": [
-    { picker: "Phil", pick: "Packers ML" },
-    { picker: "Tay", pick: "Romeo Doubs +0.5 Touchdowns" },
-  ],
-  "401772924": [
-    { picker: "Phil", pick: "49ers ML" },
-    { picker: "Tay", pick: "Falcons -2.5" },
-    { picker: "Tay", pick: "George Kittle +0.5 Touchdowns" },
-    { picker: "Tay", pick: "Zonovan Knight +0.5 Touchdowns" },
-  ],
-  "401772755": [{ picker: "Phil", pick: "Patriots ML" }],
-  "401772826": [{ picker: "Tay", pick: "Jaxon Smith-Njigba +0.5 Touchdowns" }],
-  "401772816": [{ picker: "Tay", pick: "Jared Goff +1.5 Passing TDs" }],
-  "401772635": [{ picker: "Tay", pick: "Total over 45.5" }],
+  "401772942": [{ picker: "Phil", pick: "Vikings ML" }],
+  "401772759": [{ picker: "Phil", pick: "Bears ML" }],
+  "401772865": [{ picker: "Phil", pick: "Bills ML" }],
+  "401772868": [{ picker: "Phil", pick: "Patriots ML" }],
+  "401772760": [{ picker: "Phil", pick: "Falcons ML" }],
+  "401772869": [{ picker: "Phil", pick: "Bucs ML" }],
+  "401772817": [{ picker: "Phil", pick: "Chiefs ML" }],
 };
 
 export default function App() {
@@ -115,21 +86,7 @@ export default function App() {
           })
           .filter(Boolean) as Game[];
 
-        const allowedIds = [
-          "401772635",
-          "401772861",
-          "401772757",
-          "401772864", // Commanders Game
-          "401772754",
-          "401772756", // Colts Game
-          "401772753", // Chiefs Game
-          "401772860", // Panthers Game
-          "401772863", // Packers Game
-          "401772924", // 49ers Game
-          "401772755", // Patriots Game
-          "401772826", // Texans Game
-          "401772816", // Bucs Game
-        ];
+        const allowedIds = Object.keys(picksData);
 
         let gamesToDisplay: Game[] = [];
 
@@ -149,7 +106,7 @@ export default function App() {
               missingIds.map(async (id) => {
                 try {
                   const summaryRes = await fetch(
-                    `https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=${id}`
+                    `https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=${id}`
                   );
                   const summaryData = await summaryRes.json();
                   const header = summaryData.header;
@@ -171,8 +128,8 @@ export default function App() {
                     awayTeamLogo: awayTeam.team?.logos?.[0]?.href || "",
                     status: competition.status?.type?.detail || "Scheduled",
                     startDate: competition.date || new Date().toISOString(),
-                    homeScore: homeTeam.score,
-                    awayScore: awayTeam.score,
+                    homeScore: homeTeam.score || 0,
+                    awayScore: awayTeam.score || 0,
                     competitionName: `${homeTeam.team?.name} vs ${awayTeam.team?.name}`,
                     description: competition.status?.type?.shortDetail || "",
                     awayWinner:
@@ -190,8 +147,8 @@ export default function App() {
             );
 
             gamesToDisplay = [
-              ...filteredGames,
               ...fetchedGames.filter(Boolean),
+              ...filteredGames,
             ] as Game[];
           } else {
             gamesToDisplay = filteredGames;
