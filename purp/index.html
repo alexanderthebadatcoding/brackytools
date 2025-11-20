@@ -3,8 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- head content -->
+    <meta
+      name="fc:miniapp"
+      content='{"version":"1","imageUrl":"https://bracky-games.vercel.app/scores.png","button":{"title":"See Picks","action":{"type":"launch_miniapp","name":"Live Score","url":"https://bracky-games.vercel.app/","splashImageUrl":"https://bracky-games.vercel.app/scores.png","splashBackgroundColor":"#26334A"}}}'
+    />
+    <!-- For backward compatibility -->
+    <meta
+      name="fc:frame"
+      content='{"version":"1","imageUrl":"https://bracky-games.vercel.app/scores.png","button":{"title":"See Live Score","action":{"type":"launch_frame","name":"Live Score","url":"https://bracky-games.vercel.app/","splashImageUrl":"https://bracky-games.vercel.app/scores.png","splashBackgroundColor":"#26334A"}}}'
+    />
 
-    <title>Gilbs Picks</title>
+    <title>Live Scores for Bracky</title>
   </head>
   <body>
     <div id="root"></div>

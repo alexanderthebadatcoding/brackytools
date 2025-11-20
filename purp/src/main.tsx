@@ -21,8 +21,8 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     <App />
     <footer>
       <div className="flex items-center justify-center flex-col">
-        <a href="https://overtime.io" className="hover:text-accent underline">
-          Check overtime.io
+        <a href="https://bracky.app" className="hover:text-accent underline">
+          Check Bracky for prices
         </a>
       </div>
     </footer>
