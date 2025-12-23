@@ -108,16 +108,27 @@ function CreatePuzzle({
 
   const shareToFarcaster = async () => {
     try {
+      const validWords = words.filter((w) => w.trim().length > 0);
+      const previewText =
+        validWords.length >= 2
+          ? `${validWords[0]} → ${validWords[1]} → ...`
+          : "Custom puzzle";
+
       const result = await sdk.actions.composeCast({
-        text: `🧩 I created a custom Before & After puzzle! Can you solve it?\n\nTry it here:`,
+        text: `🧩 Can you solve my Before & After puzzle?\n\n${previewText}\n\nPlay here:`,
         embeds: [shareUrl],
       });
 
       if (result?.cast) {
         console.log("Cast shared:", result.cast.hash);
+        // Optionally close the modal after successful share
+        setTimeout(() => {
+          onClose();
+        }, 1000);
       }
     } catch (error) {
       console.error("Failed to share cast:", error);
+      alert("Failed to share. Please try copying the link instead.");
     }
   };
 
@@ -431,19 +442,62 @@ export default function App() {
   useEffect(() => {
     const initApp = async () => {
       try {
-        await sdk.actions.ready();
+        // Set up meta tags for better sharing
+        const updateMetaTags = (
+          puzzle: { words: string[]; phrases: string[] } | null
+        ) => {
+          const description = puzzle
+            ? `Solve this Before & After puzzle: ${puzzle.words.slice(0, 3).join(" → ")}...`
+            : "Play Before & After - Connect words to form phrases!";
+
+          document.title = "Before & After Word Game";
+
+          let metaDescription = document.querySelector(
+            'meta[name="description"]'
+          );
+          if (!metaDescription) {
+            metaDescription = document.createElement("meta");
+            metaDescription.setAttribute("name", "description");
+            document.head.appendChild(metaDescription);
+          }
+          metaDescription.setAttribute("content", description);
+
+          // OG tags for better social sharing
+          const ogTags = [
+            { property: "og:title", content: "Before & After Word Game" },
+            { property: "og:description", content: description },
+            { property: "og:type", content: "website" },
+          ];
+
+          ogTags.forEach((tag) => {
+            let meta = document.querySelector(
+              `meta[property="${tag.property}"]`
+            );
+            if (!meta) {
+              meta = document.createElement("meta");
+              meta.setAttribute("property", tag.property);
+              document.head.appendChild(meta);
+            }
+            meta.setAttribute("content", tag.content);
+          });
+        };
 
         // Check for shared puzzle in URL
         const urlParams = new URLSearchParams(window.location.search);
         const puzzleParam = urlParams.get("p");
 
+        let loadedPuzzle = null;
         if (puzzleParam) {
           const decoded = decodePuzzle(puzzleParam);
           if (decoded) {
             setCustomPuzzle(decoded);
+            loadedPuzzle = decoded;
           }
         }
 
+        updateMetaTags(loadedPuzzle);
+
+        await sdk.actions.ready();
         setIsReady(true);
       } catch (error) {
         console.error("Failed to initialize Farcaster SDK:", error);
