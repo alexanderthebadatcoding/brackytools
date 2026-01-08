@@ -1,22 +1,28 @@
 {
   "frame": {
-    "name": "Bracky Live Score Checker",
+    "name": "Bracky Tools",
     "version": "1",
-    "iconUrl": "https://bracky-games.vercel.app/icon.png",
-    "homeUrl": "https://bracky-games.vercel.app",
-    "imageUrl": "https://bracky-games.vercel.app/image.png",
-    "buttonTitle": "Check Live Scores",
-    "splashImageUrl": "https://bracky-games.vercel.app/splash.png",
-    "splashBackgroundColor": "#26334A",
-    "webhookUrl": "https://bracky-games.vercel.app/api/webhook",
-    "description": "Check Live scores for bracky matchups.",
+    "iconUrl": "https://www.bracky.tools/icon.png",
+    "homeUrl": "https://www.bracky.tools",
+    "imageUrl": "https://www.bracky.tools/screenshot.png",
+    "buttonTitle": "Launch Tools",
+    "splashImageUrl": "https://www.bracky.tools/OG.png",
+    "splashBackgroundColor": "#112047",
+    "description": "Prediction utilities for smarter decisions, analytics and ",
+    "subtitle": "Bracky Tools to improve your game",
     "primaryCategory": "games",
-    "subtitle": "created by @gilbster",
-    "tags": ["bracky", "sports", "scores"]
+    "heroImageUrl": "https://www.bracky.tools/OG.png",
+    "screenshotUrls": ["https://www.bracky.tools/screenshot.png"],
+    "tags": ["bracky", "prediction", "odds", "analytics"],
+    "tagline": "Bracky Tools to boost winnings",
+    "ogTitle": "Bracky Tools.",
+    "ogDescription": "Step up your game with prediction utilities for smarter decisions",
+    "ogImageUrl": "https://www.bracky.tools/OG.png",
+    "castShareUrl": "https://warpcast.com/~/compose?text=Check+Out+Bracky+Tools"
   },
   "accountAssociation": {
-    "header": "eyJmaWQiOjMxOTA1NCwidHlwZSI6ImN1c3RvZHkiLCJrZXkiOiIweDZENTEwMENEMDVlMzc4N0Q0QWQ4Qzk0NDA2QzhCNWVlMTUzOTU3MjUifQ",
-    "payload": "eyJkb21haW4iOiJicmFja3ktZ2FtZXMudmVyY2VsLmFwcCJ9",
-    "signature": "5zQCM+3IyODM9ZnB2LdEmLcYNBjipaFvcs51bvyzjvJLPgWJaEDKslP0uz2G+AnJnA/aJn9tA5zurdOkNb6jaxs="
+    "header": "eyJmaWQiOjMxOTA1NCwidHlwZSI6ImF1dGgiLCJrZXkiOiIweDdGMTM2ODgxYjIzNkVkOWE0MDNkQTdhN0RkNjMyRTlEMDM5MEVCNjMifQ",
+    "payload": "eyJkb21haW4iOiJ3d3cuYnJhY2t5LnRvb2xzIn0",
+    "signature": "Qufa3jkh3k9dIzobmijK5qogbb/dYRds+nCitys2loYPb9h+VDCUWsqXOuBVsoGECGeYc1PYolKhUOKuwnsprxs="
   }
 }
