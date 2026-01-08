@@ -24,6 +24,7 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.545.0",
+    "pnpm": "^10.27.0",
     "qr": "^0.5.2",
     "qt": "^0.1.0",
     "react": "^18.3.1",
