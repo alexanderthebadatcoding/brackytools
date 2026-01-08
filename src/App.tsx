@@ -16,7 +16,7 @@ function LinkTree() {
     {
       title: "Bracky Odds",
       description:
-        "view pre-game Money line and ESPN odds and compare with Bracky.",
+        "View pre-game Money line and ESPN odds and compare with Bracky.",
       icon: "/odds.png",
       url: "https://bracky-odds.vercel.app",
       gradient: "from-blue-400 to-blue-600",
@@ -100,7 +100,7 @@ export default function App() {
     <div className="min-h-screen bg-gradient-to-br from-sky-900 via-blue-800 to-slate-900 p-4 sm:p-6 text-slate-100">
       <div className="max-w-2xl mx-auto">
         <div className="text-center mb-8">
-          <h1 className="text-4xl sm:text-5xl font-extrabold mb-2 text-white bg-clip-text text-transparent">
+          <h1 className="text-4xl sm:text-5xl font-extrabold mb-2 text-white bg-clip-text">
             Bracky Tools
           </h1>
           <p className="text-gray-100 mt-2">

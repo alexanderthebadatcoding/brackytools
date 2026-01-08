@@ -9,7 +9,7 @@
     "splashImageUrl": "https://www.bracky.tools/OG.png",
     "splashBackgroundColor": "#112047",
     "description": "Prediction utilities for smarter decisions, analytics and ",
-    "subtitle": "Bracky Tools to improve your game",
+    "subtitle": "Bracky Tools",
     "primaryCategory": "games",
     "heroImageUrl": "https://www.bracky.tools/OG.png",
     "screenshotUrls": ["https://www.bracky.tools/screenshot.png"],
@@ -17,8 +17,7 @@
     "tagline": "Bracky Tools to boost winnings",
     "ogTitle": "Bracky Tools.",
     "ogDescription": "Step up your game with prediction utilities for smarter decisions",
-    "ogImageUrl": "https://www.bracky.tools/OG.png",
-    "castShareUrl": "https://warpcast.com/~/compose?text=Check+Out+Bracky+Tools"
+    "ogImageUrl": "https://www.bracky.tools/OG.png"
   },
   "accountAssociation": {
     "header": "eyJmaWQiOjMxOTA1NCwidHlwZSI6ImF1dGgiLCJrZXkiOiIweDdGMTM2ODgxYjIzNkVkOWE0MDNkQTdhN0RkNjMyRTlEMDM5MEVCNjMifQ",
