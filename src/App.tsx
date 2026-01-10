@@ -26,7 +26,7 @@ function LinkTree() {
       description:
         "Live game analysis and probability tracking from ESPN Analytics",
       icon: "/win.png",
-      url: "https://cloudywithachanceofwin.netlify.app",
+      url: "https://chart.bracky.tools",
       gradient: "from-purple-500 to-pink-500",
     },
     {
