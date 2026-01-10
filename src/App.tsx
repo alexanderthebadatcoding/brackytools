@@ -18,7 +18,7 @@ function LinkTree() {
       description:
         "View pre-game Money line and ESPN odds and compare with Bracky.",
       icon: "/odds.png",
-      url: "https://bracky-odds.vercel.app",
+      url: "https://odds.bracky.tools",
       gradient: "from-blue-400 to-blue-600",
     },
     {
